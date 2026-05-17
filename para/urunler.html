@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menü & Ürünler | La Petite Boulangerie</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- İkonlar için FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html">La Petite <span>Boulangerie</span></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="urunler.html" class="active">Menü & Ürünler</a></li>
+                <li><a href="iletisim.html">İletişim</a></li>
+            </ul>
+        </nav>
+
+        <a href="sepet.html" class="cart-nav">
+            <i class="fa-solid fa-basket-shopping"></i>
+            <span id="cart-count">0</span>
+        </a>
+    </header>
+
+    ```
+
+---
+
+## 📝 2. Yeni Sepet Sayfası (`sepet.html`)
+
+PyCharm'da **`sepet.html`** adında yepyeni bir dosya oluştur ve içine şu kodları yapıştır. Bu sayfa sadece sepetteki ürünleri listelemek için tasarlandı:
+
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sepetim | La Petite Boulangerie</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html">La Petite <span>Boulangerie</span></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="urunler.html">Menü & Ürünler</a></li>
+                <li><a href="iletisim.html">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="sepet-sayfa-container">
+        <h2>Alışveriş Sepetiniz</h2>
+
+        <div class="sepet-wrapper">
+            <div id="sepet-page-items" class="sepet-page-items">
+                <p class="empty-msg">Sepetiniz henüz boş.</p>
+            </div>
+
+            <div class="sepet-summary">
+                <h3>Sipariş Özeti</h3>
+                <div class="summary-row">
+                    <span>Ara Toplam</span>
+                    <span id="sepet-subtotal">0 ₺</span>
+                </div>
+                <div class="summary-row">
+                    <span>Teslimat</span>
+                    <span style="color: green; font-weight: 600;">Ücretsiz</span>
+                </div>
+                <hr>
+                <div class="summary-row total">
+                    <span>Genel Toplam</span>
+                    <span id="sepet-total-price">0 ₺</span>
+                </div>
+                <button class="checkout-page-btn" onclick="alert('Siparişiniz hayali olarak alındı! Afiyet olsun :)')">Siparişi Onayla</button>
+                <a href="urunler.html" class="back-to-shop">← Alışverişe Devam Et</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 La Petite Boulangerie. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+    <!-- Açılır Sepet Penceresi (Sidebar) -->
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Sepetiniz</h3>
+            <!-- Kapatma çarpı işareti -->
+            <i class="fa-solid fa-xmark" onclick="toggleCart()"></i>
+        </div>
+        <div id="cart-items" class="cart-items">
+            <p class="empty-msg">Sepetiniz henüz boş.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Toplam:</span>
+                <span id="cart-total-price">0 ₺</span>
+            </div>
+            <!-- WhatsApp butonu tamamen kaldırıldı, sadece bilgilendirme amaçlı şık bir kapatma butonu eklendi -->
+            <button class="checkout-btn" onclick="toggleCart()">Alışverişe Devam Et</button>
+        </div>
+    </div>
+
+    <!-- Sayfa Başlığı (Banner) -->
+    <section class="menu-banner">
+        <h1>Zengin Lezzet Menümüz</h1>
+        <p>Fırınımızdan çıkan sıcak lezzetlerden, özenle demlenmiş kahvelere kadar aradığınız her şey.</p>
+    </section>
+
+    <!-- ÜRÜNLER BÖLÜMÜ -->
+    <main class="menu-container">
+
+        <!-- KATEGORİ 1: FIRIN & YEMEKLER -->
+        <div class="menu-category">
+            <h2 class="category-title"><i class="fa-solid fa-utensils"></i> Fırın & Yemekler</h2>
+            <div class="products-grid">
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=600" alt="Fransız Kruvasanı">
+                    </div>
+                    <div class="product-info">
+                        <h3>Fransız Kruvasanı</h3>
+                        <p>Gerçek Fransız tereyağı ile kat kat açılmış, dışı çıtır içi nefis gözenekli klasik lezzet.</p>
+                        <div class="product-footer">
+                            <span class="price">45 ₺</span>
+                            <button class="order-btn">Sipariş Et</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=600" alt="Keçi Peynirli Salata">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ilık Keçi Peynirli Salata</h3>
+                        <p>Akdeniz yeşillikleri, ceviz, kurutulmuş domates ve fırınlanmış özel keçi peyniri eşliğinde.</p>
+                        <div class="product-footer">
+                            <span class="price">140 ₺</span>
+                            <button class="order-btn">Sipariş Et</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=600" alt="Avokadolu Kruvasan Sandviç">
+                    </div>
+                    <div class="product-info">
+                        <h3>Avokadolu Füme Sandviç</h3>
+                        <p>Büyük boy kruvasan içerisine avokado püresi, dana füme et ve çedar peyniri.</p>
+                        <div class="product-footer">
+                            <span class="price">110 ₺</span>
+                            <button class="order-btn">Sipariş Et</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=600" alt="Margarita Pizza">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ekşi Mayalı Margarita</h3>
+                        <p>48 saat dinlendirilmiş ekşi mayalı hamur, özel domates sosu, taze mozzarella ve fesleğen.</p>
+                        <div class="product-footer">
+                            <span class="price">180 ₺</span>
+                            <button class="order-btn">Sipariş Et</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- KATEGORİ 2: SICAK İÇECEKLER -->
+        <div class="menu-category">
+            <h2 class="category-title"><i class="fa-solid fa-mug-hot"></i> Sıcak İçecekler</h2>
+            <div class="products-grid">
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=600" alt="Caffe Latte">
+                    </div>
+                    <div class="product-info">
+                        <h3>Caffe Latte</h3>
+                        <p>Double espresso ve kadifemsi sıcak sütün muhteşem uyumu.</p>
+                        <div class="product-footer">
+                            <span class="price">55 ₺</span>
+                            <button class="order-btn">Sipariş Et</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=600" alt="Filtre Kahve">
+                    </div>
+                    <div class="product-info">
+                        <h3>Nitelikli Filtre Kahve</h3>
+                        <p>Etiyopya kökenli, meyvemsi notalara sahip taze demlenmiş el yapımı filtre kahve.</p>
+                        <div class="product-footer">
+                            <span class="price">45 ₺</span>
+                            <button class="order-btn">Sipariş Et</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=600" alt="Eritme Sıcak Çikolata">
+                    </div>
+                    <div class="product-info">
+                        <h3>Eritme Sıcak Çikolata</h3>
+                        <p>Gerçek Belçika çikolatasının sütle eritilmesiyle hazırlanan yoğun kıvamlı kış klasiği.</p>
+                        <div class="product-footer">
+                            <span class="price">65 ₺</span>
+                            <button class="order-btn">Sipariş Et</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1563887550657-c24ade47bbf2?q=80&w=600" alt="Bitki Çayı">
+                    </div>
+                    <div class="product-info">
+                        <h3>Yaseminli Yeşil Çay</h3>
+                        <p>Premium kurutulmuş yeşil çay yaprakları ve taze yasemin çiçekleri özü.</p>
+                        <div class="product-footer">
+                            <span class="price">50 ₺</span>
+                            <button class="order-btn">Sipariş Et</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- KATEGORİ 3: SOĞUK İÇECEKLER -->
+        <div class="menu-category">
+            <h2 class="category-title"><i class="fa-solid fa-glass-water"></i> Soğuk İçecekler</h2>
+            <div class="products-grid">
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=600" alt="Iced Latte">
+                    </div>
+                    <div class="product-info">
+                        <h3>Iced Caffe Latte</h3>
+                        <p>Espresso, soğuk süt ve bol buzun ferahlatıcı buluşması.</p>
+                        <div class="product-footer">
+                            <span class="price">60 ₺</span>
+                            <button class="order-btn">Sipariş Et</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=600" alt="Ev Yapımı Limonata">
+                    </div>
+                    <div class="product-info">
+                        <h3>Çilekli Ev Limonatası</h3>
+                        <p>Taze sıkılmış limon suyu, nane yaprakları ve gerçek çilek püresi ile buzlu ferahlık.</p>
+                        <div class="product-footer">
+                            <span class="price">55 ₺</span>
+                            <button class="order-btn">Sipariş Et</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1541658016709-82535e94bc69?q=80&w=600" alt="Cold Brew">
+                    </div>
+                    <div class="product-info">
+                        <h3>Cold Brew</h3>
+                        <p>16 saat boyunca soğuk damıtma yöntemiyle hazırlanan, pürüzsüz ve sert kahve deneyimi.</p>
+                        <div class="product-footer">
+                            <span class="price">65 ₺</span>
+                            <button class="order-btn">Sipariş Et</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=600" alt="Berry Smoothie">
+                    </div>
+                    <div class="product-info">
+                        <h3>Orman Meyveli Smoothie</h3>
+                        <p>Ahududu, yaban mersini, çilek ve sütün buzla blenderize edilmiş sağlıklı karışımı.</p>
+                        <div class="product-footer">
+                            <span class="price">70 ₺</span>
+                            <button class="order-btn">Sipariş Et</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- KATEGORİ 4: TATLILAR & MAKARONLAR -->
+        <div class="menu-category">
+            <h2 class="category-title"><i class="fa-solid fa-cake-candles"></i> Tatlılar & Makaronlar</h2>
+            <div class="products-grid">
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=600" alt="Çikolatalı Pasta">
+                    </div>
+                    <div class="product-info">
+                        <h3>Belçika Çikolatalı Pasta</h3>
+                        <p>%70 kakao oranına sahip Belçika çikolatası ve taze çilek katmanlarıyla yoğun lezzet.</p>
+                        <div class="product-footer">
+                            <span class="price">420 ₺</span>
+                            <button class="order-btn">Sipariş Et</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1569864358642-9d1684040f43?q=80&w=600" alt="Makaronlar">
+                    </div>
+                    <div class="product-info">
+                        <h3>Renkli Fransız Makaronları</h3>
+                        <p>Antep fıstıklı, limonlu, vanilyalı ve karamelli seçenekleriyle içi yumuşacık 6'lı paket.</p>
+                        <div class="product-footer">
+                            <span class="price">120 ₺</span>
+                            <button class="order-btn">Sipariş Et</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=600" alt="Çilekli Tart">
+                    </div>
+                    <div class="product-info">
+                        <h3>Mevsim Meyveli Tart</h3>
+                        <p>Çıtır tart hamuru üzerinde ev yapımı pastacı kreması ve taze mevsim meyveleri.</p>
+                        <div class="product-footer">
+                            <span class="price">65 ₺</span>
+                            <button class="order-btn">Sipariş Et</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?q=80&w=600" alt="San Sebastian Cheesecake">
+                    </div>
+                    <div class="product-info">
+                        <h3>San Sebastian Cheesecake</h3>
+                        <p>İçi akışkan, üzeri tam kıvamında yanık, meşhur hafif bask krem peynirli kek.</p>
+                        <div class="product-footer">
+                            <span class="price">85 ₺</span>
+                            <button class="order-btn">Sipariş Et</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 La Petite Boulangerie. Tüm Hakları Saklıdır.</p>
+        <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+    </footer>
+
+    <!-- JavaScript dosyamızı bağlıyoruz -->
+    <script src="script.js"></script>
+</body>
+</html>
