@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Güvenli Ödeme | La Petite Boulangerie</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html">La Petite <span>Boulangerie</span></a>
+        </div>
+    </header>
+
+    <main class="payment-container">
+        <div class="payment-wrapper">
+
+            <div class="payment-form-box">
+                <h2><i class="fa-solid fa-lock"></i> Güvenli Ödeme Ekranı</h2>
+                <p class="payment-subtitle">Lütfen kart bilgilerinizi giriniz. İşleminiz 256-bit SSL ile korunmaktadır.</p>
+
+                <form id="pay-form" onsubmit="handlePayment(event)">
+                    <div class="form-group">
+                        <label for="card-name">Kart Üzerindeki İsim</label>
+                        <input type="text" id="card-name" placeholder="Örn: Ahmet Yılmaz" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="card-number">Kart Numarası</label>
+                        <div class="input-with-icon">
+                            <input type="text" id="card-number" placeholder="0000 0000 0000 0000" maxlength="19" required>
+                            <i class="fa-solid fa-credit-card"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="card-expiry">Son Kullanma (AA/YY)</label>
+                            <input type="text" id="card-expiry" placeholder="12/28" maxlength="5" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="card-cvv">CVV (Güvenlik Kodu)</label>
+                            <input type="password" id="card-cvv" placeholder="123" maxlength="3" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="pay-submit-btn">
+                        Ödemeyi Tamamla (<span id="payment-amount">0 ₺</span>)
+                    </button>
+                </form>
+            </div>
+
+            <div class="payment-trust-box">
+                <h3>Güvenli Alışveriş</h3>
+                <div class="trust-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <p><strong>3D Secure</strong> ile güvenli doğrulama adımı.</p>
+                </div>
+                <div class="trust-item">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <p>Ödemeniz alındıktan sonra ürünleriniz taptaze yola çıkar.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 La Petite Boulangerie. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
